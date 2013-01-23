@@ -1,3 +1,4 @@
+#include "preCompiled.h"
 #include <QApplication>
 #include "mainwindow.h"
 

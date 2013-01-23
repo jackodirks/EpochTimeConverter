@@ -1,7 +1,9 @@
 #ifndef HUMANTOEPOCH_H
 #define HUMANTOEPOCH_H
 
-#include <QWidget>
+
+#include "preCompiled.h"
+
 
 namespace Ui {
 class HumanToEpoch;
@@ -17,6 +19,8 @@ public:
     Ui::HumanToEpoch *ui;
 private:
 
+private slots:
+    void convert();
 };
 
 #endif // HUMANTOEPOCH_H

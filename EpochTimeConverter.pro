@@ -16,11 +16,13 @@ SOURCES += main.cpp\
         mainwindow.cpp \
     epochtohuman.cpp \
     humantoepoch.cpp
+PRECOMPILED_HEADER  = preCompiled.h
 
 HEADERS  += mainwindow.h \
     Forms.h \
     epochtohuman.h \
-    humantoepoch.h
+    humantoepoch.h \
+    preCompiled.h
 
 FORMS    += mainwindow.ui \
     epochtohuman.ui \

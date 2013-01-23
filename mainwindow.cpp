@@ -1,9 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Forms.h"
-#ifdef QT_DEBUG
-#include <QDebug>
-#endif
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -11,23 +8,25 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
     //i->pushButtonConvert->setAutoDefault(false);
-    //connect(ui->pushButtonConvert,SIGNAL(clicked()), this,SLOT(convert()));
-    //Form * test = new Form();
-    //this->setCentralWidget(test);
+    connect(ui->actionSwitch, SIGNAL(triggered()), this, SLOT(switchWidget()));
     EpochToHuman * epochToHuman = new EpochToHuman();
-    HumanToEpoch * humanToEpoch = new HumanToEpoch();
-    humanToEpoch->ui->label->setText("Test");
-}
-void MainWindow::convertFromEpochToHuman(){
-#ifdef QT_DEBUG
-    qDebug() << "convertFromEpochToHuman says hello.";
-#endif
+    HumanToEpoch *  humanToEpoch = new HumanToEpoch();
+    stackedWidget = new QStackedWidget();
+    stackedWidget->addWidget(humanToEpoch);
+    stackedWidget->addWidget(epochToHuman);
+    this->setCentralWidget(stackedWidget);
+    //So, indexwise: Human to Epoch is standard opening screen
 }
 
-void MainWindow::convertFromHumanToEpoch(){
+void MainWindow::switchWidget(){
 #ifdef QT_DEBUG
-    qDebug << "convertFromHumanToEpoch says hello";
+    qDebug() << "switchWidget says hello.";
 #endif
+    if (stackedWidget->currentIndex() == 0){
+        stackedWidget->setCurrentIndex(1);
+    } else {
+        stackedWidget->setCurrentIndex(0);
+    }
 }
 
 MainWindow::~MainWindow()

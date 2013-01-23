@@ -1,8 +1,11 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "preCompiled.h"
 #include <QMainWindow>
 #include <QObject>
+#include "Forms.h"
+#include <QStackedWidget>
 
 namespace Ui {
 class MainWindow;
@@ -17,10 +20,14 @@ public:
     ~MainWindow();
     
 private:
+    //Gui related variables
     Ui::MainWindow *ui;
+    EpochToHuman * epochToHuman;
+    HumanToEpoch * humanToEpoch;
+    QStackedWidget * stackedWidget;
+
 public slots:
-    void convertFromEpochToHuman();
-    void convertFromHumanToEpoch();
+    void switchWidget();
 };
 
 #endif // MAINWINDOW_H
