@@ -38,7 +38,8 @@ void EpochToHuman::convert(){
     qDebug() << "EpochToHuman::convert() says epochtime = " + QString::number(epochTime) + ".\nThe boolean ok contains: " + (ok?"TRUE":"FALSE");
 #endif
     if (!ok){
-        ui->labelErrorOutput->setText("<font color='red'>Could not convert input to int (number too large?)</font>");
+        ui->labelErrorOutput->setText("<font color='red'>Could not convert input to uint</font>");
+        return;
     }
     QDateTime humanDateTime;
     humanDateTime.setTimeSpec(Qt::TimeSpec(1)); //0 is local, 1 is UTC, 2 is offset from UTC
@@ -51,7 +52,7 @@ void EpochToHuman::checkInput(const QString &text){
     qDebug() << "EpochToHuman::checkInput(const QString &text) says hello";
 #endif
    bool ok;
-   text.toInt(&ok);
+   text.toUInt(&ok);
    if (!ok && text.length()>0){
     QString newText;
     ui->labelErrorOutput->setText("<font color='red'>Only numbers are alowed in this input</font>");

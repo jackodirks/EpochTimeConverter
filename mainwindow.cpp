@@ -20,13 +20,19 @@ MainWindow::MainWindow(QWidget *parent) :
 
 void MainWindow::switchWidget(){
 #ifdef QT_DEBUG
-    qDebug() << "switchWidget says hello.";
+    qDebug() << "MainWindow::switchWidget() says hello.";
 #endif
     if (stackedWidget->currentIndex() == 0){
         stackedWidget->setCurrentIndex(1);
+        QWidget * temp = stackedWidget->widget(0);
+        ((HumanToEpoch *)temp)->cleanFields();
     } else {
         stackedWidget->setCurrentIndex(0);
+        QWidget * temp = stackedWidget->widget(1);
+        ((EpochToHuman *)temp)->cleanFields();
     }
+
+
 }
 
 MainWindow::~MainWindow()

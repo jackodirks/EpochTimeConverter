@@ -17,6 +17,7 @@ public:
     explicit HumanToEpoch(QWidget *parent = 0);
     ~HumanToEpoch();
     Ui::HumanToEpoch *ui;
+    void cleanFields();
 private:
 
 private slots:
