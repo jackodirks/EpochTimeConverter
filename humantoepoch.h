@@ -16,9 +16,12 @@ class HumanToEpoch : public QWidget
 public:
     explicit HumanToEpoch(QWidget *parent = 0);
     ~HumanToEpoch();
-    Ui::HumanToEpoch *ui;
     void cleanFields();
+    void useUTC(bool b);
 private:
+    //private vars
+    Ui::HumanToEpoch *ui;
+    int timeSpec = 0; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
 
 private slots:
     void convert();

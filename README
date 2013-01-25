@@ -3,6 +3,7 @@ It is also a personal training
 
 The software was created on Xubuntu 12.10 64-bit, using Qt 4.8.3 and GCC 4.7.2. It is also tested on Windows 7 Ultimate 32-bit, using VS2010 compilers and Qt 4.8.4.
 
+The software standards calculates from and to localtime (epoch is always UTC), this can be changed under Time->Use UTC time
+
 (possible) Upcoming features:
--timezone support: choose what timezonne to convert to.
 -time/date formatting: a way to choose yourself how to format the time and date outputted by the epoch-to-human part

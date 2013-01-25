@@ -15,9 +15,12 @@ public:
     explicit EpochToHuman(QWidget *parent = 0);
     ~EpochToHuman();
     void cleanFields();
+    void useUTC(bool b);
     
 private:
     Ui::EpochToHuman *ui;
+    //private vars
+    int timeSpec = 0; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
 
 private slots:
     void convert();

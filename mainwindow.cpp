@@ -9,8 +9,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     //i->pushButtonConvert->setAutoDefault(false);
     connect(ui->actionSwitch, SIGNAL(triggered()), this, SLOT(switchWidget()));
-    EpochToHuman * epochToHuman = new EpochToHuman();
-    HumanToEpoch *  humanToEpoch = new HumanToEpoch();
+    connect(ui->actionUse_UTC_time, SIGNAL(triggered(bool)), this, SLOT(setUTC(bool)));
+    epochToHuman = new EpochToHuman();
+    humanToEpoch = new HumanToEpoch();
     stackedWidget = new QStackedWidget();
     stackedWidget->addWidget(humanToEpoch);
     stackedWidget->addWidget(epochToHuman);
@@ -24,15 +25,21 @@ void MainWindow::switchWidget(){
 #endif
     if (stackedWidget->currentIndex() == 0){
         stackedWidget->setCurrentIndex(1);
-        QWidget * temp = stackedWidget->widget(0);
-        ((HumanToEpoch *)temp)->cleanFields();
+        humanToEpoch->cleanFields();
     } else {
         stackedWidget->setCurrentIndex(0);
-        QWidget * temp = stackedWidget->widget(1);
-        ((EpochToHuman *)temp)->cleanFields();
+        epochToHuman->cleanFields();
     }
 
 
+}
+
+void MainWindow::setUTC(bool b){
+#ifdef QT_DEBUG
+    qDebug() << "MainWindow::setUTC(bool b) says hello. The value of b is" << b ;
+#endif
+    humanToEpoch->useUTC(b);
+    epochToHuman->useUTC(b);
 }
 
 MainWindow::~MainWindow()

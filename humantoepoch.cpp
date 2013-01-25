@@ -19,8 +19,23 @@ HumanToEpoch::~HumanToEpoch()
     delete ui;
 }
 
+void HumanToEpoch::useUTC(bool b){
+    if (b){
+        timeSpec = 1;
+    } else {
+        timeSpec = 0;
+    }
+    cleanFields();
+}
+
 void HumanToEpoch::cleanFields(){
-    ui->dateTimeEdit->setDateTime(QDateTime::currentDateTimeUtc());
+    QDateTime dateTime;
+    if(timeSpec == 0){
+        dateTime = QDateTime::currentDateTime();
+    } else {
+        dateTime = QDateTime::currentDateTimeUtc();
+    }
+    ui->dateTimeEdit->setDateTime(dateTime);
     ui->labelError->clear();
     ui->lineEditOutput->clear();
 }
@@ -33,9 +48,9 @@ void HumanToEpoch::convert(){
     //dateTime = ui->dateTimeEdit->dateTime();
     dateTime.setTime(ui->dateTimeEdit->time());
     dateTime.setDate( ui->dateTimeEdit->date());
-    dateTime.setUtcOffset(0);
+    dateTime.setTimeSpec(Qt::TimeSpec(timeSpec));
 #ifdef QT_DEBUG
-    qDebug() << "HumantoEpoch::convert() says: datetime: " + dateTime.toString("ddd dd MMMM yyyy, hh:mm:ss");
+    qDebug() << "HumantoEpoch::convert() says: datetime: " + dateTime.toString("ddd dd MMMM yyyy, hh:mm:ss") + " Timespec is " + QString::number(timeSpec);
 #endif
     ui->lineEditOutput->setText(QString::number(dateTime.toTime_t()));
 }

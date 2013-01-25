@@ -26,8 +26,9 @@ private:
     HumanToEpoch * humanToEpoch;
     QStackedWidget * stackedWidget;
 
-public slots:
+private slots:
     void switchWidget();
+    void setUTC(bool b);
 };
 
 #endif // MAINWINDOW_H

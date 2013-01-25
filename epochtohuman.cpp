@@ -18,6 +18,14 @@ EpochToHuman::~EpochToHuman()
     delete ui;
 }
 
+void EpochToHuman::useUTC(bool b){
+    if (b){
+        timeSpec = 1;
+    } else {
+        timeSpec = 0;
+    }
+}
+
 void EpochToHuman::cleanFields(){
     ui->labelErrorOutput->clear();
     ui->lineEditInput->clear();
@@ -42,7 +50,7 @@ void EpochToHuman::convert(){
         return;
     }
     QDateTime humanDateTime;
-    humanDateTime.setTimeSpec(Qt::TimeSpec(1)); //0 is local, 1 is UTC, 2 is offset from UTC
+    humanDateTime.setTimeSpec(Qt::TimeSpec(timeSpec)); //0 is local, 1 is UTC, 2 is offset from UTC
     humanDateTime.setTime_t(epochTime);
     ui->lineEditOutput->setText(humanDateTime.toString("ddd dd MMMM yyyy, hh:mm:ss"));
 }

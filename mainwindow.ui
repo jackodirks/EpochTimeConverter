@@ -31,7 +31,14 @@
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
+   <widget class="QMenu" name="menuTime">
+    <property name="title">
+     <string>Time</string>
+    </property>
+    <addaction name="actionUse_UTC_time"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuTime"/>
   </widget>
   <action name="actionSwitch">
    <property name="text">
@@ -41,6 +48,14 @@
   <action name="actionExit">
    <property name="text">
     <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionUse_UTC_time">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Use UTC time</string>
    </property>
   </action>
  </widget>
