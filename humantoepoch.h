@@ -21,7 +21,7 @@ public:
 private:
     //private vars
     Ui::HumanToEpoch *ui;
-    int timeSpec = 0; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
+    int timeSpec; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
 
 private slots:
     void convert();

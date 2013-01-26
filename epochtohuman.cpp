@@ -7,6 +7,7 @@ EpochToHuman::EpochToHuman(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::EpochToHuman)
 {
+    timeSpec = 0;
     ui->setupUi(this);
     ui->pushButtonConvert->setAutoDefault(false);
     connect(ui->pushButtonConvert,SIGNAL(clicked()),this,SLOT(convert()));
