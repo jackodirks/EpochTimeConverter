@@ -12,6 +12,7 @@ EpochToHuman::EpochToHuman(QWidget *parent) :
     ui->pushButtonConvert->setAutoDefault(false);
     connect(ui->pushButtonConvert,SIGNAL(clicked()),this,SLOT(convert()));
     connect(ui->lineEditInput,SIGNAL(textEdited(QString)),this,SLOT(checkInput(QString)));
+
 }
 
 EpochToHuman::~EpochToHuman()

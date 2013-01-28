@@ -66,7 +66,7 @@
     </date>
    </property>
    <property name="displayFormat">
-    <string>M/d/yyyy hh:mm:ss </string>
+    <string>dd/MM/yyyy hh:mm:ss </string>
    </property>
   </widget>
   <widget class="QLabel" name="label_2">
@@ -79,7 +79,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Human-readable time (UTC)</string>
+    <string>Human-readable time</string>
    </property>
   </widget>
   <widget class="QLabel" name="labelError">
