@@ -25,6 +25,7 @@ void EpochToHuman::useUTC(bool b){
     } else {
         timeSpec = 0;
     }
+    cleanFields();
 }
 
 void EpochToHuman::cleanFields(){
