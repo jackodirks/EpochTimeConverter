@@ -26,7 +26,9 @@ void EpochToHuman::useUTC(bool b){
     } else {
         timeSpec = 0;
     }
-    convert();
+    if (ui->lineEditInput->text().length() > 0){
+        convert();
+    }
 }
 
 void EpochToHuman::cleanFields(){
@@ -74,4 +76,13 @@ void EpochToHuman::checkInput(const QString &text){
     }
     ui->lineEditInput->setText(newText);
    }
+}
+
+void EpochToHuman::keyPressEvent(QKeyEvent * event){
+    if (event->key() == Qt::Key_Return){
+#ifdef QT_DEBUG
+        qDebug()<<"EpochToHuman::keyPressEvent says: return pressed.";
+#endif
+        convert();
+    }
 }

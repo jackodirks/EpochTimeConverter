@@ -3,6 +3,7 @@
 
 
 #include "preCompiled.h"
+#include <QKeyEvent>
 
 
 namespace Ui {
@@ -22,6 +23,7 @@ private:
     //private vars
     Ui::HumanToEpoch *ui;
     int timeSpec; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
+    void keyPressEvent(QKeyEvent *);
 
 private slots:
     void convert();

@@ -46,7 +46,6 @@ void HumanToEpoch::convert(){
     qDebug() << "HumanToEpoch::convert() says hello.";
 #endif
     QDateTime dateTime;
-    //dateTime = ui->dateTimeEdit->dateTime();
     dateTime.setTime(ui->dateTimeEdit->time());
     dateTime.setDate( ui->dateTimeEdit->date());
     dateTime.setTimeSpec(Qt::TimeSpec(timeSpec));
@@ -54,4 +53,13 @@ void HumanToEpoch::convert(){
     qDebug() << "HumantoEpoch::convert() says: datetime: " + dateTime.toString("ddd dd MMMM yyyy, hh:mm:ss") + " Timespec is " + QString::number(timeSpec);
 #endif
     ui->lineEditOutput->setText(QString::number(dateTime.toTime_t()));
+}
+
+void HumanToEpoch::keyPressEvent(QKeyEvent * event){
+    if (event->key() == Qt::Key_Return){
+#ifdef QT_DEBUG
+        qDebug()<<"HumanToEpoch::KeyPressEvent says: return pressed.";
+#endif
+        convert();
+    }
 }

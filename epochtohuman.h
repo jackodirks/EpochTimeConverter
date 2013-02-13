@@ -2,6 +2,7 @@
 #define EPOCHTOHUMAN_H
 
 #include "preCompiled.h"
+#include <QKeyEvent>
 
 namespace Ui {
 class EpochToHuman;
@@ -21,6 +22,7 @@ private:
     Ui::EpochToHuman *ui;
     //private vars
     int timeSpec; //The timespec from Qt::TimeSpec. default 0 (local time) can become 1 (UTC)
+    void keyPressEvent(QKeyEvent *);
 
 private slots:
     void convert();
